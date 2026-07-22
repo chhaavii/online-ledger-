@@ -51,7 +51,7 @@ Designed for **Player CHHAVI**, this application combines tactile hardware inter
 
 ## 📸 Screenshots
 
-> *Coming soon - Add screenshots of the ATM interface, receipt roll, and ledger audit views*
+![Demo GIF](./demo.gif)
 
 ---
 
