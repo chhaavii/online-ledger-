@@ -16,6 +16,8 @@
 
 ---
 
+![Demo GIF](./demo.gif)
+
 Designed for **Player CHHAVI**, this application combines tactile hardware interactions (physical card slot insertion, thermal paper receipt printing with drag-to-tear animations, Web Audio synthesized sound effects) with a **mathematically rigorous double-entry bookkeeping engine, built on the same accounting principles GAAP sits on top of**.
 
 ---
@@ -47,11 +49,6 @@ Designed for **Player CHHAVI**, this application combines tactile hardware inter
 - **Express API**: RESTful endpoints with idempotency protection
 - **JSON Database**: Atomic file-based storage with write locks
 
----
-
-## 📸 Screenshots
-
-![Demo GIF](./demo.gif)
 
 ---
 
