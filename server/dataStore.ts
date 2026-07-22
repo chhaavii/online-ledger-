@@ -185,6 +185,30 @@ const DEFAULT_TRANSACTIONS: Transaction[] = [
 ];
 
 function initDB(): DBData {
+  // On Vercel/serverless, always return default data since file system is ephemeral
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    console.log("Running on serverless platform, using in-memory default data");
+    return {
+      transactions: DEFAULT_TRANSACTIONS,
+      keywords: DEFAULT_KEYWORDS,
+      idempotencyKeys: {
+        "init-key-1": "tx-init-1",
+        "init-key-2": "tx-init-2",
+        "init-key-3": "tx-init-3",
+        "init-key-4": "tx-init-4",
+        "init-key-5": "tx-init-5",
+        "init-key-6": "tx-init-6",
+        "init-key-7": "tx-init-7",
+        "init-key-8": "tx-init-8",
+        "init-key-9": "tx-init-9",
+        "init-key-10": "tx-init-10",
+        "init-key-11": "tx-init-11",
+        "init-key-12": "tx-init-12",
+      },
+    };
+  }
+
+  // Local development: use file-based storage
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
@@ -229,6 +253,12 @@ function initDB(): DBData {
 let db = initDB();
 
 function saveDB() {
+  // On Vercel/serverless, skip saving since file system is ephemeral
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    console.log("Running on serverless platform, skipping file save");
+    return;
+  }
+
   try {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
