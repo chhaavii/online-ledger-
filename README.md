@@ -21,6 +21,8 @@
 Designed for **Player CHHAVI**, this application combines tactile hardware interactions (physical card slot insertion, thermal paper receipt printing with drag-to-tear animations, Web Audio synthesized sound effects) with a **mathematically rigorous double-entry bookkeeping engine, built on the same accounting principles GAAP sits on top of**.
 
 ---
+## Live site 
+- https://online-ledger.vercel.app/
 
 ## ✨ Features
 
