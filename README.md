@@ -345,8 +345,8 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Made by Chhavi** 😊
 
-- GitHub: [@yourusername](https://github.com/chhaavii)
-- Project Link: [https://github.com/yourusername/online-ledger](https://github.com/chhaavii/online-ledger)
+- GitHub: [@chhaavii](https://github.com/chhaavii)
+- Project Link: [https://github.com/chhaavii/online-ledger](https://github.com/chhaavii/online-ledger)
 
 ---
 
