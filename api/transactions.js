@@ -226,6 +226,36 @@ export default function handler(req, res) {
     idempotencyKeys[key] = newTransaction.id;
 
     res.status(201).json({ transaction: newTransaction, duplicate: false });
+  } else if (req.method === 'PATCH') {
+    const { id } = req.query;
+    const { reimbursed, category, desc } = req.body;
+
+    const index = transactions.findIndex(t => t.id === id);
+    if (index === -1) {
+      return res.status(404).json({ error: "Transaction not found" });
+    }
+
+    if (reimbursed !== undefined) {
+      transactions[index].reimbursed = reimbursed;
+    }
+    if (category !== undefined) {
+      transactions[index].category = category;
+    }
+    if (desc !== undefined) {
+      transactions[index].desc = desc;
+    }
+
+    res.status(200).json(transactions[index]);
+  } else if (req.method === 'DELETE') {
+    const { id } = req.query;
+
+    const index = transactions.findIndex(t => t.id === id);
+    if (index === -1) {
+      return res.status(404).json({ error: "Transaction not found" });
+    }
+
+    transactions.splice(index, 1);
+    res.status(200).json({ success: true, id });
   } else {
     res.status(405).json({ error: 'Method not allowed' });
   }
