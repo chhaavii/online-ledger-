@@ -25,7 +25,7 @@ import {
 import { toggleSound, playClickSound } from "./utils/audioEffects";
 
 // Generated background asset path
-const TAIPEI_ANIME_BG = "/src/assets/images/anime_atm_machine_street_1784705789849.jpg";
+const TAIPEI_ANIME_BG = "/anime_atm_machine_street_1784705789849.jpg";
 
 export default function App() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
