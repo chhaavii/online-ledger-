@@ -1,0 +1,6 @@
+{
+  "name": "Online Ledger",
+  "description": "A personal double-entry expense tracker for a Taiwan student featuring an ATM card insertion flow, receipt printing animations, auto-categorization, and roommate IOU tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
