@@ -97,6 +97,10 @@ export const AtmMachine: React.FC<AtmMachineProps> = ({
 
     playPrintReceiptSound();
 
+    // Reset any previous receipt so a new print always animates fresh
+    setIsReceiptTorn(false);
+    setReceiptDragX(0);
+
     const idempotencyKey = "key-" + crypto.randomUUID();
     const billNum = "TX-" + Math.floor(1000 + Math.random() * 9000);
 
@@ -518,7 +522,7 @@ export const AtmMachine: React.FC<AtmMachineProps> = ({
 
                     {/* Interactive Draggable Receipt */}
                     <motion.div
-                      key="dispensed-receipt-paper"
+                      key={printedReceiptData.idempotencyKey}
                       drag="x"
                       dragConstraints={{ left: -180, right: 180 }}
                       dragElastic={0.25}

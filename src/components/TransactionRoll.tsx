@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // #made by chhavi :)
+import { AnimatePresence } from "motion/react";
 import { Transaction } from "../types";
 import { ReceiptCard } from "./ReceiptCard";
 import { Search, Printer } from "lucide-react";
@@ -115,21 +116,23 @@ export const TransactionRoll: React.FC<TransactionRollProps> = ({
           </div>
         ) : (
           <div className="space-y-1">
-            {filteredTransactions.map((tx) => {
-              const billNum = transactions.length - transactions.findIndex((t) => t.id === tx.id);
-              const isNew = tx.id === lastCreatedTxId;
+            <AnimatePresence initial={false}>
+              {filteredTransactions.map((tx) => {
+                const billNum = transactions.length - transactions.findIndex((t) => t.id === tx.id);
+                const isNew = tx.id === lastCreatedTxId;
 
-              return (
-                <ReceiptCard
-                  key={tx.id}
-                  transaction={tx}
-                  billIndex={billNum}
-                  onToggleReimbursed={onToggleReimbursed}
-                  onDeleteTransaction={onDeleteTransaction}
-                  isNew={isNew}
-                />
-              );
-            })}
+                return (
+                  <ReceiptCard
+                    key={tx.id}
+                    transaction={tx}
+                    billIndex={billNum}
+                    onToggleReimbursed={onToggleReimbursed}
+                    onDeleteTransaction={onDeleteTransaction}
+                    isNew={isNew}
+                  />
+                );
+              })}
+            </AnimatePresence>
           </div>
         )}
       </div>

@@ -10,6 +10,7 @@ import { TrialBalanceModal } from "./components/TrialBalanceModal";
 import { KeywordManagerModal } from "./components/KeywordManagerModal";
 import { Sidebar, NavView } from "./components/Sidebar";
 import { IntroScreen } from "./components/IntroScreen";
+import { CherryBlossoms } from "./components/CherryBlossoms";
 import {
   CreditCard,
   Menu,
@@ -23,6 +24,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { toggleSound, playClickSound } from "./utils/audioEffects";
+import { computeLedger } from "./ledgerEngine";
 
 // Generated background asset path
 const TAIPEI_ANIME_BG = "/anime_atm_machine_street_1784705789849.jpg";
@@ -39,8 +41,8 @@ export default function App() {
   const [showIntro, setShowIntro] = useState<boolean>(true);
   const [activeView, setActiveView] = useState<NavView>("atm");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const [scanlinesEnabled, setScanlinesEnabled] = useState<boolean>(false);
   const [soundOn, setSoundOn] = useState<boolean>(true);
+  const [sakuraEnabled, setSakuraEnabled] = useState<boolean>(true);
 
   // Modals for direct popup triggers if requested from sub-pages
   const [isLedgerModalOpen, setIsLedgerModalOpen] = useState<boolean>(false);
@@ -97,8 +99,17 @@ export default function App() {
         const result = await res.json();
         if (result.transaction) {
           setLastCreatedTxId(result.transaction.id);
+          setTransactions((prev) => {
+            const next = [
+              result.transaction,
+              ...prev.filter((t) => t.id !== result.transaction.id),
+            ].sort(
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+            );
+            setLedger(computeLedger(next));
+            return next;
+          });
         }
-        await fetchAllData();
       }
     } catch (err) {
       console.error("Error submitting transaction:", err);
@@ -116,7 +127,13 @@ export default function App() {
       });
 
       if (res.ok) {
-        await fetchAllData();
+        setTransactions((prev) => {
+          const next = prev.map((t) =>
+            t.id === id ? { ...t, reimbursed: !currentReimbursed } : t
+          );
+          setLedger(computeLedger(next));
+          return next;
+        });
       }
     } catch (err) {
       console.error("Error toggling reimbursement status:", err);
@@ -130,7 +147,14 @@ export default function App() {
       });
 
       if (res.ok) {
-        await fetchAllData();
+        setTransactions((prev) => {
+          const next = prev.filter((t) => t.id !== id);
+          setLedger(computeLedger(next));
+          return next;
+        });
+        if (lastCreatedTxId === id) {
+          setLastCreatedTxId(null);
+        }
       }
     } catch (err) {
       console.error("Error deleting transaction:", err);
@@ -181,6 +205,13 @@ export default function App() {
 
       {/* Atmospheric Overlay Gradient */}
       <div className="fixed inset-0 bg-gradient-to-t from-[#1e2730] via-[#2D3A47]/80 to-[#1e2730]/90 pointer-events-none z-0" />
+
+      {/* Retro CRT scanlines only on the background */}
+      <div className="fixed inset-0 z-0 pointer-events-none crt-scanlines crt-scanlines-active" />
+      <div className="fixed inset-0 z-0 pointer-events-none crt-vignette" />
+
+      {/* Cherry blossoms falling in background */}
+      {sakuraEnabled && <CherryBlossoms />}
 
       {/* Main HUD Header */}
       <header className="sticky top-0 z-30 bg-[#2D3A47]/90 backdrop-blur-md border-b-2 border-[#3e4f60] shadow-xl">
@@ -256,11 +287,11 @@ export default function App() {
         onClose={() => setIsSidebarOpen(false)}
         activeView={activeView}
         onSelectView={(v) => setActiveView(v)}
-        scanlinesEnabled={scanlinesEnabled}
-        onToggleScanlines={() => setScanlinesEnabled(!scanlinesEnabled)}
         onTriggerIntroAnimation={() => setShowIntro(true)}
         soundOn={soundOn}
         onToggleSound={handleToggleSound}
+        sakuraEnabled={sakuraEnabled}
+        onToggleSakura={() => setSakuraEnabled(!sakuraEnabled)}
       />
 
       {/* Main Container - Page View Switching */}

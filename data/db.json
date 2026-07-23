@@ -1,0 +1,252 @@
+{
+  "transactions": [
+    {
+      "id": "tx-b8d28ded-1158-4f15-bff5-8a4745f2246b",
+      "date": "2026-07-23",
+      "amount": 67,
+      "desc": "hi",
+      "whose": "Mine",
+      "category": "General",
+      "reimbursed": false,
+      "idempotencyKey": "key-c64b68ac-bdea-4f5e-8056-c2df036b88b0",
+      "createdAt": "2026-07-23T03:22:55.582Z"
+    },
+    {
+      "id": "tx-init-2",
+      "date": "2026-07-23",
+      "amount": 180,
+      "desc": "Shilin night market boba & snacks",
+      "whose": "Roommate",
+      "category": "Dining Out",
+      "reimbursed": false,
+      "idempotencyKey": "init-key-2",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-3",
+      "date": "2026-07-22",
+      "amount": 500,
+      "desc": "MRT EasyCard Top-Up",
+      "whose": "Mine",
+      "category": "Transport",
+      "reimbursed": false,
+      "idempotencyKey": "init-key-3",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-4",
+      "date": "2026-07-20",
+      "amount": 620,
+      "desc": "PX Mart Weekly Groceries (Shared)",
+      "whose": "Roommate",
+      "category": "Groceries",
+      "reimbursed": true,
+      "idempotencyKey": "init-key-4",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-6",
+      "date": "2026-07-22",
+      "amount": 350,
+      "desc": "Din Tai Fung Xiao Long Bao",
+      "whose": "Roommate",
+      "category": "Dining Out",
+      "reimbursed": false,
+      "idempotencyKey": "init-key-6",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-7",
+      "date": "2026-07-20",
+      "amount": 120,
+      "desc": "YouBike rental to NTU",
+      "whose": "Mine",
+      "category": "Transport",
+      "reimbursed": false,
+      "idempotencyKey": "init-key-7",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-8",
+      "date": "2026-07-23",
+      "amount": 2500,
+      "desc": "Semester tuition payment",
+      "whose": "Mine",
+      "category": "Education",
+      "reimbursed": false,
+      "idempotencyKey": "init-key-8",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-9",
+      "date": "2026-07-22",
+      "amount": 180,
+      "desc": "FamilyMart convenience store dinner",
+      "whose": "Roommate",
+      "category": "Dining Out",
+      "reimbursed": true,
+      "idempotencyKey": "init-key-9",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-10",
+      "date": "2026-07-20",
+      "amount": 450,
+      "desc": "Electricity bill for apartment",
+      "whose": "Mine",
+      "category": "Utilities",
+      "reimbursed": false,
+      "idempotencyKey": "init-key-10",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-11",
+      "date": "2026-07-23",
+      "amount": 500,
+      "desc": "Taiwan High Speed Rail ticket",
+      "whose": "Roommate",
+      "category": "Transport",
+      "reimbursed": false,
+      "idempotencyKey": "init-key-11",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    },
+    {
+      "id": "tx-init-12",
+      "date": "2026-07-22",
+      "amount": 890,
+      "desc": "Textbooks for economics course",
+      "whose": "Mine",
+      "category": "Education",
+      "reimbursed": false,
+      "idempotencyKey": "init-key-12",
+      "createdAt": "2026-07-23T03:08:35.837Z"
+    }
+  ],
+  "keywords": [
+    [
+      "7-11",
+      "Groceries"
+    ],
+    [
+      "7-Eleven",
+      "Groceries"
+    ],
+    [
+      "FamilyMart",
+      "Groceries"
+    ],
+    [
+      "全家",
+      "Groceries"
+    ],
+    [
+      "PX Mart",
+      "Groceries"
+    ],
+    [
+      "全聯",
+      "Groceries"
+    ],
+    [
+      "night market",
+      "Dining Out"
+    ],
+    [
+      "夜市",
+      "Dining Out"
+    ],
+    [
+      "market",
+      "Groceries"
+    ],
+    [
+      "bubble tea",
+      "Dining Out"
+    ],
+    [
+      "boba",
+      "Dining Out"
+    ],
+    [
+      "珍奶",
+      "Dining Out"
+    ],
+    [
+      "din tai fung",
+      "Dining Out"
+    ],
+    [
+      "bento",
+      "Dining Out"
+    ],
+    [
+      "便當",
+      "Dining Out"
+    ],
+    [
+      "MRT",
+      "Transport"
+    ],
+    [
+      "捷運",
+      "Transport"
+    ],
+    [
+      "YouBike",
+      "Transport"
+    ],
+    [
+      "Bus",
+      "Transport"
+    ],
+    [
+      "公車",
+      "Transport"
+    ],
+    [
+      "tuition",
+      "Education"
+    ],
+    [
+      "textbook",
+      "Education"
+    ],
+    [
+      "books",
+      "Education"
+    ],
+    [
+      "Dorm",
+      "Housing"
+    ],
+    [
+      "Rent",
+      "Housing"
+    ],
+    [
+      "electricity",
+      "Utilities"
+    ],
+    [
+      "water bill",
+      "Utilities"
+    ],
+    [
+      "SIM card",
+      "Telecom"
+    ]
+  ],
+  "idempotencyKeys": {
+    "init-key-2": "tx-init-2",
+    "init-key-3": "tx-init-3",
+    "init-key-4": "tx-init-4",
+    "init-key-6": "tx-init-6",
+    "init-key-7": "tx-init-7",
+    "init-key-8": "tx-init-8",
+    "init-key-9": "tx-init-9",
+    "init-key-10": "tx-init-10",
+    "init-key-11": "tx-init-11",
+    "init-key-12": "tx-init-12",
+    "key-c64b68ac-bdea-4f5e-8056-c2df036b88b0": "tx-b8d28ded-1158-4f15-bff5-8a4745f2246b"
+  }
+}

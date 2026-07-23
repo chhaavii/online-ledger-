@@ -1,1 +1,53 @@
 @import "tailwindcss";
+
+/* CRT Retro Background Effect Styles */
+
+@keyframes crt-bg-flicker {
+  0% { opacity: 0.28; }
+  50% { opacity: 0.35; }
+  100% { opacity: 0.28; }
+}
+
+.crt-scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+}
+
+.crt-scanlines-active {
+  animation: crt-bg-flicker 0.25s infinite;
+}
+
+.crt-vignette {
+  background: radial-gradient(circle, rgba(0, 0, 0, 0) 55%, rgba(18, 24, 32, 0.55) 100%);
+}
+
+/* Sakura Cherry Blossoms Falling Effect */
+@keyframes sakura-fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(115vh) translateX(var(--drift-x, 80px)) rotate(var(--rotation-end, 360deg));
+    opacity: 0;
+  }
+}
+
+.sakura-petal {
+  background: linear-gradient(135deg, #f7c8d3 0%, #b46a72 100%);
+  border-radius: 15px 0 15px 15px;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+

@@ -9,12 +9,12 @@ import {
   Server,
   Volume2,
   VolumeX,
-  Tv,
   Play,
   X,
   ChevronRight,
   Gamepad2,
   Sparkles,
+  Flower,
 } from "lucide-react";
 import { playClickSound } from "../utils/audioEffects";
 
@@ -25,11 +25,11 @@ interface SidebarProps {
   onClose: () => void;
   activeView: NavView;
   onSelectView: (view: NavView) => void;
-  scanlinesEnabled: boolean;
-  onToggleScanlines: () => void;
   onTriggerIntroAnimation: () => void;
   soundOn: boolean;
   onToggleSound: () => void;
+  sakuraEnabled: boolean;
+  onToggleSakura: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -37,11 +37,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onClose,
   activeView,
   onSelectView,
-  scanlinesEnabled,
-  onToggleScanlines,
   onTriggerIntroAnimation,
   soundOn,
   onToggleSound,
+  sakuraEnabled,
+  onToggleSakura,
 }) => {
   if (!isOpen) return null;
 
@@ -219,18 +219,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <span>{soundOn ? "SFX: ON" : "SFX: OFF"}</span>
             </button>
 
-            {/* CRT Scanline Toggle */}
+            {/* Sakura Falling Toggle */}
             <button
               type="button"
-              onClick={onToggleScanlines}
+              onClick={() => {
+                playClickSound();
+                onToggleSakura();
+              }}
               className={`p-2 rounded-xl border flex items-center justify-center space-x-1.5 text-xs transition-colors cursor-pointer ${
-                scanlinesEnabled
-                  ? "bg-[#A8B58A]/20 border-[#A8B58A] text-[#A8B58A]"
+                sakuraEnabled
+                  ? "bg-[#B46A72]/20 border-[#B46A72] text-[#F7C8D3]"
                   : "bg-[#182028] border-[#3e4f60] text-[#A9B7C6]"
               }`}
             >
-              <Tv className="w-3.5 h-3.5" />
-              <span>{scanlinesEnabled ? "CRT: ON" : "CRT: OFF"}</span>
+              <Flower className="w-3.5 h-3.5 text-[#F7C8D3]" />
+              <span>{sakuraEnabled ? "SAKURA: ON" : "SAKURA: OFF"}</span>
             </button>
           </div>
         </div>
