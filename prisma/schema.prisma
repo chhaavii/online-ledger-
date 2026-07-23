@@ -1,0 +1,25 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Transaction {
+  id             String   @id @default(uuid())
+  date           String
+  amount         Float
+  desc           String
+  whose          String
+  category       String
+  reimbursed     Boolean  @default(false)
+  idempotencyKey String   @unique
+  createdAt      DateTime @default(now())
+}
+
+model Keyword {
+  id       String @id @default(uuid())
+  keyword  String
+  category String
+}

@@ -15,24 +15,21 @@ import { computeLedger } from "./src/ledgerEngine.js";
 async function startServer() {
   const app = express();
   const PORT = 3000;
-
   app.use(express.json());
 
   // API Routes
-  app.get("/api/transactions", (req, res) => {
-    const txs = getTransactions();
+  app.get("/api/transactions", async (req, res) => {
+    const txs = await getTransactions();
     res.json(txs);
   });
 
-  app.post("/api/transactions", (req, res) => {
+  app.post("/api/transactions", async (req, res) => {
     const { date, amount, desc, whose, category, idempotencyKey } = req.body;
-
     if (!desc || amount === undefined || !whose) {
       return res.status(400).json({ error: "Missing required fields: desc, amount, whose" });
     }
-
     const key = idempotencyKey || `req-${Date.now()}-${Math.random()}`;
-    const result = addTransaction({
+    const result = await addTransaction({
       date,
       amount,
       desc,
@@ -40,47 +37,44 @@ async function startServer() {
       category,
       idempotencyKey: key,
     });
-
     res.status(result.duplicate ? 200 : 201).json(result);
   });
 
-  app.patch("/api/transactions/:id", (req, res) => {
+  app.patch("/api/transactions/:id", async (req, res) => {
     const { id } = req.params;
     const { reimbursed, category, desc } = req.body;
-
-    const updated = updateTransaction(id, { reimbursed, category, desc });
+    const updated = await updateTransaction(id, { reimbursed, category, desc });
     if (!updated) {
       return res.status(404).json({ error: "Transaction not found" });
     }
-
     res.json(updated);
   });
 
-  app.delete("/api/transactions/:id", (req, res) => {
+  app.delete("/api/transactions/:id", async (req, res) => {
     const { id } = req.params;
-    const success = deleteTransaction(id);
+    const success = await deleteTransaction(id);
     if (!success) {
       return res.status(404).json({ error: "Transaction not found" });
     }
     res.json({ success: true, id });
   });
 
-  app.get("/api/keywords", (req, res) => {
-    const keywords = getKeywords();
+  app.get("/api/keywords", async (req, res) => {
+    const keywords = await getKeywords();
     res.json(keywords);
   });
 
-  app.put("/api/keywords", (req, res) => {
+  app.put("/api/keywords", async (req, res) => {
     const newKeywords = req.body;
     if (!Array.isArray(newKeywords)) {
       return res.status(400).json({ error: "Body must be an array of [keyword, category] pairs" });
     }
-    const updated = setKeywords(newKeywords);
+    const updated = await setKeywords(newKeywords);
     res.json(updated);
   });
 
-  app.get("/api/ledger", (req, res) => {
-    const txs = getTransactions();
+  app.get("/api/ledger", async (req, res) => {
+    const txs = await getTransactions();
     const ledger = computeLedger(txs);
     res.json(ledger);
   });

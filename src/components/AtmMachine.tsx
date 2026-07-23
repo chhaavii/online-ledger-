@@ -101,7 +101,7 @@ export const AtmMachine: React.FC<AtmMachineProps> = ({
     setIsReceiptTorn(false);
     setReceiptDragX(0);
 
-    const idempotencyKey = "key-" + crypto.randomUUID();
+    const idempotencyKey = "key-" + Date.now() + "-" + Math.random().toString(36).slice(2, 11);
     const billNum = "TX-" + Math.floor(1000 + Math.random() * 9000);
 
     const txPayload = {
