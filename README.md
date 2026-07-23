@@ -62,8 +62,8 @@ Designed for **Player CHHAVI**, this application combines tactile hardware inter
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/yourusername/online-ledger.git
-cd online-ledger
+git clone https://github.com/chhaavii/online-ledger.git
+cd online-ledger-
 ```
 
 ### Install Dependencies
