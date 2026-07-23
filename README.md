@@ -49,8 +49,7 @@ Designed for **Player CHHAVI**, this application combines tactile hardware inter
 - **React 19**: Latest React features and performance
 - **Vite 6**: Lightning-fast HMR and optimized builds
 - **Express API**: RESTful endpoints with idempotency protection
-- **JSON Database**: Atomic file-based storage with write locks
-
+- **PostgreSQL Database**: Serverless Postgres (via Neon) with Prisma ORM for type-safe queries
 
 ---
 
@@ -110,7 +109,9 @@ npm run clean
 
 ```text
 ├── server/
-│   └── dataStore.ts           # JSON file-based database store with write locks & idempotency
+│   └── dataStore.ts           # Prisma-based database queries with idempotency
+├── prisma/
+│   └── schema.prisma          # Database schema (Transaction, Keyword models)
 ├── server.ts                  # Express 5 server with API routes & Vite middleware
 ├── src/
 │   ├── assets/                # Background image assets
@@ -132,8 +133,6 @@ npm run clean
 │   ├── ledgerEngine.ts                # Double-entry calculation & keyword matching logic
 │   ├── main.tsx                       # React application DOM root entry point
 │   └── types.ts                       # Shared TypeScript interface & type definitions
-├── data/
-│   └── db.json                        # Local persistent JSON database file (auto-initialized)
 ├── .env.example                       # Environment variable definitions
 ├── metadata.json                      # Application metadata & frame permissions
 ├── package.json                       # Dependencies & build scripts
@@ -348,7 +347,7 @@ This project is open source and available under the [MIT License](LICENSE).
 **Made by Chhavi** 😊
 
 - GitHub: [@chhaavii](https://github.com/chhaavii)
-- Project Link: [https://github.com/chhaavii/online-ledger](https://github.com/chhaavii/online-ledger)
+- Project Link: [https://github.com/chhaavii/online-ledger-](https://github.com/chhaavii/online-ledger-)
 
 ---
 
