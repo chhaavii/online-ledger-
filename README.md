@@ -1,4 +1,4 @@
-# 🎰 Taipei EasyCard ATM & Double-Entry Ledger Engine
+# 🌸 Taipei EasyCard ATM & Double-Entry Ledger Engine
 
 <div align="center">
 
